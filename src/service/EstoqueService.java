@@ -1,0 +1,48 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import entities.ProductBatch;
+
+public class EstoqueService {
+
+	
+	private List<ProductBatch> batchs = new ArrayList<>();
+	
+	public void addBatch(ProductBatch batch) {
+		
+		batchs.add(batch);
+	}
+	
+	public void listBatch() {
+		for (ProductBatch batch : batchs) {
+			System.out.println(batch);
+		}
+		
+	}
+	public  ProductBatch searchBatch(String numberBatch) {
+		for (ProductBatch batch : batchs) {
+			if(batch.getProductBatch().equals(numberBatch)) {
+				
+				return batch;
+			}
+		}
+		return null;
+	}
+	public boolean removeBatch(String numberBatch) {
+		ProductBatch foundBatch = searchBatch(numberBatch);
+		
+		if(foundBatch != null) {
+			
+			batchs.remove(foundBatch);
+			return true;
+			}
+		return false;
+		
+	}
+	public List<ProductBatch> getBatch(){
+		return batchs;
+	}
+	
+}
