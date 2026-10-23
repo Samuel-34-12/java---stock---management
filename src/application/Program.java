@@ -20,11 +20,14 @@ public class Program {
 		EstoqueService estoque = new EstoqueService();
 		estoque.addBatch(lp);
 		estoque.addBatch(lp2);
+		estoque.stocktentry("12A3B", 5 );
+		estoque.outflowStock("12A3B", 3);
+		
 		
 		estoque.listBatch();
 		
 		//System.out.println(p1);
-		//System.out.println(lp);
+		System.out.println(lp);
 
 	}
 

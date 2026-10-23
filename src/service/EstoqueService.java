@@ -45,4 +45,43 @@ public class EstoqueService {
 		return batchs;
 	}
 	
+	public int totalquantity() {
+		 
+		int total = 0;
+		
+		for(ProductBatch batch : batchs) {
+			total = total + batch.getQuantity();
+		}
+		return total;
+	}
+	
+	public boolean stocktentry(String numberBatch, int quantity) {
+		ProductBatch batch = searchBatch(numberBatch);
+		
+		if (batch == null) {
+			return false;	
+		}
+		
+		if (quantity <= 0) {
+			return false;
+		}
+		batch.setQuantity(batch.getQuantity() + quantity);
+		
+		return true;
+	}
+	public boolean outflowStock(String numberBatch, int quantity) {
+		ProductBatch batch = searchBatch(numberBatch);
+		
+		if(batch == null) {
+			return false;
+		}
+		if(quantity <= 0) {
+			return false;
+		}
+		if(quantity > batch.getQuantity()) {
+			return false;
+		}
+		batch.setQuantity(batch.getQuantity() - quantity);
+		return true;
+	}
 }
